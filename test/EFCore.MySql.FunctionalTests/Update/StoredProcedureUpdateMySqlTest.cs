@@ -15,10 +15,10 @@ namespace Pomelo.EntityFrameworkCore.MySql.FunctionalTests.Update;
 
 public class StoredProcedureUpdateMySqlTest : StoredProcedureUpdateTestBase
 {
-    public override Task Non_sproc_followed_by_sproc_commands_in_the_same_batch(bool value)
-    {
-        throw new NotImplementedException();
-    }
+    // public override Task Non_sproc_followed_by_sproc_commands_in_the_same_batch(bool value)
+    // {
+    //     throw new NotImplementedException();
+    // }
 
 
     public override async Task Insert_with_output_parameter(bool async)

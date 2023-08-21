@@ -18,18 +18,18 @@ namespace Pomelo.EntityFrameworkCore.MySql.Json.Newtonsoft.Query.Internal
         {
         }
 
-        public override string GetJsonPropertyName(MemberInfo member)
-            => member.GetCustomAttribute<JsonPropertyAttribute>()?.PropertyName;
         // public override string GetJsonPropertyName(MemberInfo member)
-        // {
-        //     var attributeName = member.GetCustomAttribute<JsonPropertyAttribute>()?.PropertyName;
-        //     if (!string.IsNullOrWhiteSpace(attributeName))
-        //         return attributeName;
+        //     => member.GetCustomAttribute<JsonPropertyAttribute>()?.PropertyName;
+        public override string GetJsonPropertyName(MemberInfo member)
+        {
+            var attributeName = member.GetCustomAttribute<JsonPropertyAttribute>()?.PropertyName;
+            if (!string.IsNullOrWhiteSpace(attributeName))
+                return attributeName;
 
-        //     if (JsonConvert.DefaultSettings?.Invoke()?.ContractResolver is DefaultContractResolver resolver)
-        //         return resolver.GetResolvedPropertyName(member.Name);
+            if (JsonConvert.DefaultSettings?.Invoke()?.ContractResolver is DefaultContractResolver resolver)
+                return resolver.GetResolvedPropertyName(member.Name);
 
-        //     return new DefaultContractResolver().GetResolvedPropertyName(member.Name);
-        // }
+            return new DefaultContractResolver().GetResolvedPropertyName(member.Name);
+        }
     }
 }

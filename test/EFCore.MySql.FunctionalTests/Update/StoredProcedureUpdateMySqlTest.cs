@@ -19,6 +19,7 @@ public class StoredProcedureUpdateMySqlTest : StoredProcedureUpdateTestBase
     {
         await base.Insert_with_output_parameter(
             async,
+
 """
 CREATE PROCEDURE Entity_Insert(pName varchar(255), OUT pId int)
 BEGIN
@@ -310,18 +311,18 @@ SELECT @_out_p0, @_out_p1;
 """,
             TestSqlLoggerFactory.Sql);
 
-//         AssertSql(
-// """
-// @p2='1'
-// @p4=NULL (DbType = DateTime)
-// @p0='2022-11-14T12:03:01.9884410' (Nullable = true) (DbType = DateTime)
-// @p3='Updated' (Size = 4000)
-//
-// SET @_out_p0 = @p0;
-// SET @_out_p1 = NULL;
-// CALL `Entity_Update`(@p2, @_out_p0, @p3, @_out_p1);
-// SELECT @_out_p0, @_out_p1;
-// """);
+        //         AssertSql(
+        // """
+        // @p2='1'
+        // @p4=NULL (DbType = DateTime)
+        // @p0='2022-11-14T12:03:01.9884410' (Nullable = true) (DbType = DateTime)
+        // @p3='Updated' (Size = 4000)
+        //
+        // SET @_out_p0 = @p0;
+        // SET @_out_p1 = NULL;
+        // CALL `Entity_Update`(@p2, @_out_p0, @p3, @_out_p1);
+        // SELECT @_out_p0, @_out_p1;
+        // """);
     }
 
     public override async Task Store_generated_concurrency_token_as_two_parameters(bool async)
@@ -356,17 +357,17 @@ SELECT @_out_p0, @_out_p1;
 """,
             TestSqlLoggerFactory.Sql);
 
-//         AssertSql(
-//             """
-// @p2='1'
-// @p3='2022-11-14T14:02:25.0912340' (Nullable = true) (DbType = DateTime)
-// @p4='Updated' (Size = 4000)
-//
-// SET @_out_p0 = NULL;
-// SET @_out_p1 = NULL;
-// CALL `Entity_Update`(@p2, @p3, @p4, @_out_p0, @_out_p1);
-// SELECT @_out_p0, @_out_p1;
-// """);
+        //         AssertSql(
+        //             """
+        // @p2='1'
+        // @p3='2022-11-14T14:02:25.0912340' (Nullable = true) (DbType = DateTime)
+        // @p4='Updated' (Size = 4000)
+        //
+        // SET @_out_p0 = NULL;
+        // SET @_out_p1 = NULL;
+        // CALL `Entity_Update`(@p2, @p3, @p4, @_out_p0, @_out_p1);
+        // SELECT @_out_p0, @_out_p1;
+        // """);
     }
 
     public override async Task User_managed_concurrency_token(bool async)
